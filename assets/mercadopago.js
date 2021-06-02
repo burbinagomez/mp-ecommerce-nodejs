@@ -24,7 +24,7 @@ function pagar(mp) {
     let producto = {
         items: [{
             id: $("#id").val(),
-            picture_url: window.location.hostname + ":3000" + $("#img").val(),
+            picture_url: window.location.hostname + $("#img").val(),
             description: "Dispositivo móvil de Tienda e-commerce",
             title: $("#title").val(),
             unit_price: $("#price").val(),
@@ -32,9 +32,9 @@ function pagar(mp) {
         }],
         payer: payer,
         back_urls: {
-            success: window.location.hostname + ":3000" + "/success",
-            failure: window.location.hostname + ":3000" + "/fail",
-            pending: window.location.hostname + ":3000" + "/pending"
+            success: window.location.hostname + "/success",
+            failure: window.location.hostname + "/fail",
+            pending: window.location.hostname + "/pending"
         },
         auto_return: "approved",
         payment_methods: {
@@ -47,7 +47,7 @@ function pagar(mp) {
             installments: 6,
         },
         external_reference: "burbinagomez@gmail.com",
-        notification_url: window.location.hostname + ":3000" + "/notification",
+        notification_url: window.location.hostname + "/notification",
     };
     $.ajax({
         url: "/paid",

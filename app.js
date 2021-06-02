@@ -64,7 +64,6 @@ app.post('/notification', async function(req, res) {
     switch (webhook.type) {
         case "payment":
             mercadopago.payment.findById(webhook.id)
-            res.json({ hola: "mundo" })
             break;
         case "plan":
             mercadopago.plan.findById(webhook.id)
