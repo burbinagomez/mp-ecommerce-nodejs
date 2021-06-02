@@ -86,6 +86,7 @@ app.post('/notification', async function(req, res) {
                 }
             });
             mercadopago.payment.findById(webhook.id)
+            res.status(201)
             break;
         case "plan":
             mercadopago.plan.findById(webhook.id)
