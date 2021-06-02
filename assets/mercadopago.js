@@ -23,7 +23,7 @@ var payer = {
 function pagar(mp) {
     let producto = {
         items: [{
-            id: $("#id").val(),
+            id: 1234,
             picture_url: window.location.hostname + $("#img").val(),
             description: "Dispositivo móvil de Tienda e-commerce",
             title: $("#title").val(),
