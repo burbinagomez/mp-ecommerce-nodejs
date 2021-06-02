@@ -5,16 +5,6 @@ var port = process.env.PORT || 3000
 const bodyParser = require('body-parser');
 const api_token = process.env.api_token
 const integrator_id = process.env.integrator_id
-const nodemailer = require('nodemailer');
-
-let transport = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    auth: {
-        user: process.env.user,
-        pass: process.env.pass
-    }
-});
 mercadopago.configure({
     access_token: api_token,
     integrator_id: integrator_id,
@@ -72,19 +62,7 @@ app.post('/notification', async function(req, res) {
     const webhook = req.body;
     switch (webhook.type) {
         case "payment":
-            const message = {
-                from: process.env.user, // Sender address
-                to: process.env.user, // List of recipients
-                subject: 'Mercadolibre webhook ', // Subject line
-                text: JSON.stringify(webhook) // Plain text body
-            };
-            transport.sendMail(message, function(err, info) {
-                if (err) {
-                    console.log(err)
-                } else {
-                    console.log(info);
-                }
-            });
+            console.log(webhook)
             mercadopago.payment.findById(webhook.id)
             res.status(201)
             break;
