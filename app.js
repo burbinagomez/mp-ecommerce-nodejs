@@ -100,8 +100,8 @@ app.post('/paid', function(req, res) {
 });
 
 app.post('/notification', async function(req, res) {
-    console.log(webhook)
     const webhook = req.body;
+    console.log(webhook)
     res.status(201)
 });
 
