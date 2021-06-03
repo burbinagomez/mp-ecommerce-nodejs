@@ -1,59 +1,25 @@
 window.onload = function() {
-    const mp = new MercadoPago('APP_USR-a98b17ae-47a6-4a35-b92d-01919002b97e', {
+    pagar()
+};
+
+function pagar() {
+    const public_api = $("#public_api").val()
+    const mp = new MercadoPago(public_api, {
         locale: 'es-CO'
     });
-    pagar(mp)
-};
-var payer = {
-    name: "Lalo",
-    surname: "Landa",
-    email: "test_user_83958037@testuser.com",
-    phone: {
-        area_code: "52",
-        number: "5549737300"
-    },
-    address: {
-        street_name: "Insurgentes Sur",
-        street_number: "4602",
-        zip_code: "03940"
-    }
-}
-
-
-function pagar(mp) {
-    let producto = {
-        items: [{
-            id: 1234,
-            picture_url: window.location.hostname + $("#img").val(),
-            description: "Dispositivo móvil de Tienda e-commerce",
-            title: $("#title").val(),
-            unit_price: $("#price").val(),
-            quantity: $("#unit").val(),
-        }],
-        payer: payer,
-        back_urls: {
-            success: window.location.hostname + "/success",
-            failure: window.location.hostname + "/fail",
-            pending: window.location.hostname + "/pending"
-        },
-        auto_return: "approved",
-        payment_methods: {
-            excluded_payment_methods: [{
-                id: "amex"
-            }],
-            excluded_payment_types: [{
-                id: "atm"
-            }],
-            installments: 6,
-        },
-        external_reference: "burbinagomez@gmail.com",
-        notification_url: window.location.hostname + "/notification",
-    };
+    let items = [{
+        id: 1234,
+        picture_url: window.location.hostname + $("#img").val(),
+        description: "Dispositivo móvil de Tienda e-commerce",
+        title: $("#title").val(),
+        unit_price: $("#price").val(),
+        quantity: $("#unit").val(),
+    }]
     $.ajax({
         url: "/paid",
         type: "POST",
         contentType: 'application/json',
-        data: JSON.stringify(producto),
+        data: JSON.stringify(items),
         success: function(respuesta) {
             mp.checkout({
                 preference: {
