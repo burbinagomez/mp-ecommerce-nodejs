@@ -22,7 +22,7 @@ function pagar() {
         data: JSON.stringify(items),
         success: function(respuesta) {
             var script = document.createElement("script");
-            script.src = "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
+            script.src = "https://www.mercadopago.com.co/integrations/v1/web-payment-checkout.js";
             script.type = "text/javascript";
             script.dataset.preferenceId = respuesta.id;
             document.getElementById("prueba").innerHTML = ''
