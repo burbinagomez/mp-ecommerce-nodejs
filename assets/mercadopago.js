@@ -9,7 +9,7 @@ function pagar() {
     });
     let items = [{
         id: 1234,
-        picture_url: window.location.hostname + $("#img").val(),
+        picture_url: $("#img").val().replace('.', ''),
         description: "Dispositivo móvil de Tienda e-commerce",
         title: $("#title").val(),
         unit_price: $("#price").val(),

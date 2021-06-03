@@ -86,6 +86,7 @@ app.post('/paid', function(req, res) {
     preference.items.forEach(element => {
         element.unit_price = parseFloat(element.unit_price)
         element.quantity = parseInt(element.quantity)
+        element.picture_url = hostname + element.picture_url
     });
     // preference.payer.phone.number = parseInt(preference.payer.phone.number)
     // preference.payer.address.street_number = parseInt(preference.payer.address.street_number)
