@@ -3,10 +3,10 @@ window.onload = function() {
 };
 
 function pagar() {
-    const public_api = $("#public_api").val()
-    const mp = new MercadoPago(public_api, {
-        locale: 'es-CO'
-    });
+    // const public_api = $("#public_api").val()
+    // const mp = new MercadoPago(public_api, {
+    // locale: 'es-CO'
+    // });
     let items = [{
         id: 1234,
         picture_url: $("#img").val().replace('.', ''),
