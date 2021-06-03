@@ -21,15 +21,21 @@ function pagar() {
         contentType: 'application/json',
         data: JSON.stringify(items),
         success: function(respuesta) {
-            mp.checkout({
-                preference: {
-                    id: respuesta.id
-                },
-                render: {
-                    container: '#pagar', // Indica dónde se mostrará el botón de pago
-                    label: 'Pagar', // Cambia el texto del botón de pago (opcional)
-                }
-            });
+            var script = document.createElement("script");
+            script.src = "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
+            script.type = "text/javascript";
+            script.dataset.preferenceId = respuesta.id;
+            document.getElementById("prueba").innerHTML = ''
+            document.querySelector("#prueba").appendChild(script);
+            // mp.checkout({
+            // preference: {
+            // id: respuesta.id
+            // },
+            // render: {
+            // container: '#pagar', 
+            // label: 'Pagar', 
+            // }
+            // });
         },
         error: function() {
             console.log("No se ha podido obtener la información");
